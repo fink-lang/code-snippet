@@ -2,6 +2,10 @@
   "name": "@fink/snippet",
   "version": "0.0.0-semantically-released",
   "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=11.0.0"
   },
