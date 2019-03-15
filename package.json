@@ -24,7 +24,7 @@
     "lint:js": "eslint --report-unused-disable-directives --ignore-path .gitignore .",
     "jest": "jest --verbose --runInBand --no-cache ",
     "cd": "run clean build release",
-    "release": "run clean build semantic-release"
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
