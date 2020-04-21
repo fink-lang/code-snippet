@@ -1,21 +1,6 @@
+{describe, it, expect, to_equal} = import '@fink/jest'
+
 {highlight_code_loc} = import '.'
-
-
-
-describe = fn descr, tests:
-  global.describe:: descr, fn:
-    tests()
-    undefined
-
-it = fn descr, test:
-  global.it:: descr, test
-  undefined
-
-to_equal = fn expected: fn expect_actual:
-  expect_actual.toEqual:: expected
-
-expect = fn actual, expectation:
-  expectation:: global.expect:: actual
 
 
 
