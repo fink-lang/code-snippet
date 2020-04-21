@@ -1,18 +1,21 @@
 {highlight_code_loc} = import '.'
 
 
-describe = fn descr, tests:
-  global.describe(descr, tests)
-  undefined
 
+describe = fn descr, tests:
+  global.describe:: descr, fn:
+    tests()
+    undefined
 
 it = fn descr, test:
-  global.it(descr, test)
+  global.it:: descr, test
   undefined
 
+to_equal = fn expected: fn expect_actual:
+  expect_actual.toEqual:: expected
 
-eq = fn result, expected:
-  expect(result).toEqual(expected)
+expect = fn actual, expectation:
+  expectation:: global.expect:: actual
 
 
 
@@ -24,12 +27,12 @@ describe:: highlight_code_loc, fn:
       end: {line: 1, column: 8}
     }
 
-    highlight_code_loc(`
-      test data
-    `, loc) eq `
-    1| test data
-            ^
-    2| `
+    expect::
+      highlight_code_loc:: `test data\n`, loc
+      to_equal:: `
+        1| test data
+                ^
+        2| `
 
 
   it:: 'highlights at most 4 line beofre', fn:
@@ -38,22 +41,24 @@ describe:: highlight_code_loc, fn:
       end: {line: 6, column: 8}
     }
 
-    highlight_code_loc(`
-      line 1
-      line 2
-      line 3
-      line 4
-      line 5
-      line 6
-      line 7
-    `, loc) eq `
-    3| line 3
-    4| line 4
-    5| line 5
-    6| line 6
-            ^
-    7| line 7
-    8| `
+    expect::
+      highlight_code_loc:: `
+        line 1
+        line 2
+        line 3
+        line 4
+        line 5
+        line 6
+        line 7
+        `, loc
+      to_equal:: `
+        3| line 3
+        4| line 4
+        5| line 5
+        6| line 6
+                ^
+        7| line 7
+        8| `
 
 
   it:: 'highlights at most 3 line after', fn:
@@ -62,20 +67,22 @@ describe:: highlight_code_loc, fn:
       end: {line: 2, column: 8}
     }
 
-    highlight_code_loc(`
-      line 1
-      line 2
-      line 3
-      line 4
-      line 5
-      line 6
-      line 7
-    `, loc) eq `
-    1| line 1
-    2| line 2
-            ^
-    3| line 3
-    4| line 4
-    5| line 5`
+    expect::
+      highlight_code_loc:: `
+        line 1
+        line 2
+        line 3
+        line 4
+        line 5
+        line 6
+        line 7
+        `, loc
+      to_equal:: `
+        1| line 1
+        2| line 2
+                ^
+        3| line 3
+        4| line 4
+        5| line 5`
 
 
