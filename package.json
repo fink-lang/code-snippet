@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@fink/cli": "^3.0.0",
-    "@fink/jest": "^1.1.0",
+    "@fink/jest": "^2.0.0",
     "@fink/larix": "^6.0.2",
     "@fink/loxia": "^4.11.0",
     "commitizen": "^4.0.4",
