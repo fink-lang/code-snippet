@@ -1,27 +1,22 @@
 
 bracket = fn min, value, max:
-  Math.max(min, Math.min(value, max))
+  Math.max min, Math.min value, max
+
 
 slice = fn start, end: fn items:
-  items.slice:: start, end
-
-
-enumerate = fn [...items]:
-  items.map:: fn item, idx: [item, idx]
+  items.slice start, end
 
 
 split_at = fn idx: fn [...items]:
-  left = items.slice:: 0, idx
-  right = items.slice:: idx
+  left = items.slice 0, idx
+  right = items.slice idx
   [left, right]
 
 
-default_opts = {
-  lines: {
-    before: 4,
+default_opts = dict:
+  lines: dict:
+    before: 4
     after: 3
-  }
-}
 
 
 ---
@@ -35,27 +30,26 @@ highlight_code_loc = fn code, loc, options=default_opts:
   {lines: {before, after}} = options
   min = before
 
-  lines = code.split:: '\n'
+  lines = code.split '\n'
   {length: max_lines} = lines
 
-  start_line = bracket:: 0, start.line - before, max_lines - min
-  end_line = bracket:: 0, end.line + after, max_lines
+  start_line = bracket 0, start.line - before, max_lines - min
+  end_line = bracket 0, end.line + after, max_lines
 
   pad = `${end_line}`.length
-  underline = `${' '.repeat:: pad + start.column}  ^`
+  underline = `${' '.repeat pad + start.column}  ^`
 
   [before_lines, after_lines] = pipe lines:
-    slice:: start_line, end_line
-    enumerate
-    map [line, idx]:
-      line_num = `${start_line + idx + 1}`.padStart:: pad
-      `${line_num}| ${line}`
+    slice start_line, end_line
+    map line, idx=0:
+      line_num = `${start_line + idx + 1}`.padStart pad
+      (`${line_num}| ${line}`, idx + 1)
 
-    split_at:: start.line - start_line
+    split_at start.line - start_line
 
   [
     ...before_lines,
     underline,
     ...after_lines
-  ].join:: '\n'
+  ].join '\n'
 

@@ -4,30 +4,28 @@
 
 
 
-describe:: highlight_code_loc, fn:
+describe highlight_code_loc, fn:
 
-  it:: 'highlights lines', fn:
-    loc = {
+  it 'highlights lines', fn:
+    loc = dict:
       start: {line: 1, column: 5},
       end: {line: 1, column: 8}
-    }
 
-    expect::
-      highlight_code_loc:: `test data\n`, loc
-      to_equal:: `
+    expect
+      highlight_code_loc `test data\n`, loc
+      to_equal `
         1| test data
                 ^
         2| `
 
 
-  it:: 'highlights at most 4 line beofre', fn:
-    loc = {
+  it 'highlights at most 4 line beofre', fn:
+    loc = dict:
       start: {line: 6, column: 5},
       end: {line: 6, column: 8}
-    }
 
-    expect::
-      highlight_code_loc:: `
+    expect
+      highlight_code_loc `
         line 1
         line 2
         line 3
@@ -36,7 +34,7 @@ describe:: highlight_code_loc, fn:
         line 6
         line 7
         `, loc
-      to_equal:: `
+      to_equal `
         3| line 3
         4| line 4
         5| line 5
@@ -46,14 +44,13 @@ describe:: highlight_code_loc, fn:
         8| `
 
 
-  it:: 'highlights at most 3 line after', fn:
-    loc = {
+  it 'highlights at most 3 line after', fn:
+    loc = dict:
       start: {line: 2, column: 5},
       end: {line: 2, column: 8}
-    }
 
-    expect::
-      highlight_code_loc:: `
+    expect
+      highlight_code_loc `
         line 1
         line 2
         line 3
@@ -62,7 +59,7 @@ describe:: highlight_code_loc, fn:
         line 6
         line 7
         `, loc
-      to_equal:: `
+      to_equal `
         1| line 1
         2| line 2
                 ^
