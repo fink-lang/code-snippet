@@ -28,15 +28,15 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "@fink/cli": "^5.0.0",
-    "@fink/jest": "^5.0.0",
-    "@fink/larix": "^9.0.0",
-    "@fink/loxia": "^9.0.1",
+    "@fink/cli": "^6.0.0",
+    "@fink/jest": "^5.0.2",
+    "@fink/larix": "^9.2.0",
+    "@fink/loxia": "^9.1.0",
     "commitizen": "^4.0.4",
     "cz-conventional-changelog": "^3.1.0",
     "jest-cli": "^26.0.0",
     "npx-run": "^2.1.2",
-    "semantic-release": "^17.0.6"
+    "semantic-release": "^17.0.8"
   },
   "config": {
     "commitizen": {

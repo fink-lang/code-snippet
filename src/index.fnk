@@ -1,22 +1,7 @@
-{pad_start, repeat} = import '@fink/std-lib/str'
+{pad_start} = import '@fink/std-lib/str'
 {split} = import '@fink/std-lib/regex'
-{length, join} = import '@fink/std-lib/iter'
-{min, max} = import '@fink/std-lib/math'
-
-
-# TODO: move to std-lib
-bracket = fn min_val, value, max_val:
-  max min_val, min value, max_val
-
-# TODO: move to std-lib
-slice = fn start, end: fn items:
-  items.slice start, end
-
-# TODO: move to std-lib
-split_at = fn idx: fn [...items]:
-  left = items.slice 0, idx
-  right = items.slice idx
-  [left, right]
+{length, join, drop, take, insert_at} = import '@fink/std-lib/iter'
+{clamp} = import '@fink/std-lib/math'
 
 
 default_opts = dict:
@@ -39,26 +24,22 @@ highlight_code_loc = fn code, loc, options=default_opts:
   lines = split code, '\n'
   max_lines = length lines
 
-  start_line = bracket 0, start.line - before, max_lines - min
-  end_line = bracket 0, end.line + after, max_lines
+  start_line = clamp 0, start.line - before, max_lines - min
+  insert_line = start.line - start_line
+  end_line = clamp 0, end.line + after, max_lines
 
-  pad = length '${end_line}'
-  underline = '${repeat ' ', pad + start.column}  ^'
+  line_num_padding = length '${end_line}'
+  underline = pad_start '^', 3 + line_num_padding + start.column, ' '
 
   pipe lines:
-    slice start_line, end_line
+    drop start_line
+    take end_line - start_line
 
     map line, idx=0:
-      line_num = pad_start '${start_line + idx + 1}',  pad
+      line_num = pad_start '${start_line + idx + 1}', line_num_padding
       ('${line_num}| ${line}', idx + 1)
 
-    split_at start.line - start_line
-
-    fn [before_lines, after_lines]:
-      list:
-        ...before_lines,
-        underline,
-        ...after_lines
+    insert_at insert_line, [underline]
 
     join '\n'
 
