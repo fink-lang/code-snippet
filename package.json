@@ -44,6 +44,6 @@
     }
   },
   "dependencies": {
-    "@fink/std-lib": "^3.1.0"
+    "@fink/std-lib": "^3.1.1"
   }
 }
