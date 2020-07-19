@@ -19,6 +19,18 @@ describe highlight_code_loc, fn:
         2| '
 
 
+  it 'highlights single line', fn:
+    loc = dict:
+      start: {line: 1, column: 5},
+      end: {line: 1, column: 8}
+
+    expect
+      highlight_code_loc 'test data', loc
+      to_equal '
+        1| test data
+                ^'
+
+
   it 'highlights at most 4 line beofre', fn:
     loc = dict:
       start: {line: 6, column: 5},
