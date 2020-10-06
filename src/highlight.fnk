@@ -1,13 +1,15 @@
-{pad_start} = import '@fink/std-lib/str'
-{split} = import '@fink/std-lib/regex'
-{length, join, drop, take, insert_at} = import '@fink/std-lib/iter'
-{clamp} = import '@fink/std-lib/math'
+{pad_start} = import '@fink/std-lib/str.fnk'
+{split} = import '@fink/std-lib/regex.fnk'
+{length, join, drop, take, insert_at} = import '@fink/std-lib/iter.fnk'
+{clamp} = import '@fink/std-lib/math.fnk'
+
 
 
 default_opts = dict:
   lines: dict:
     before: 4
     after: 3
+
 
 
 ---
