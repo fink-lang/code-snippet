@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'node',
   setupFiles: [],
 
@@ -6,9 +6,11 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/build/'],
 
   transform: {
-    '^.+\\.fnk$': '@fink/jest/transform'
+    '^.+\\.fnk$': '@fink/jest/transform.js'
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/build/'],
+
+  resolver: '@fink/jest/cjs/module-resolver.js',
 
   testMatch: ['<rootDir>/**/*.test.*'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/build/'],

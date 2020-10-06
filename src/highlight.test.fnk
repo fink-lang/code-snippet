@@ -1,6 +1,6 @@
-{describe, it, expect, to_equal} = import '@fink/jest'
+{describe, it, expect, to_equal} = import '@fink/jest/test.fnk'
 
-{highlight_code_loc} = import '.'
+{highlight_code_loc} = import './highlight.fnk'
 
 
 
