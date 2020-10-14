@@ -37,7 +37,7 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "@fink/cli": "^7.0.0",
+    "@fink/cli": "^8.0.0",
     "@fink/jest": "^7.0.0",
     "@fink/larix": "^13.0.0",
     "@fink/loxia": "^14.0.0",
