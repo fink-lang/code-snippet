@@ -1,6 +1,11 @@
 {
   "name": "@fink/snippet",
   "version": "0.0.0-semantically-released",
+  "keywords": [
+    "fink",
+    "fink-lang",
+    "code-highlight"
+  ],
   "license": "MIT",
   "private": false,
   "publishConfig": {
@@ -39,8 +44,8 @@
   "devDependencies": {
     "@fink/cli": "^8.0.0",
     "@fink/jest": "^7.0.0",
-    "@fink/larix": "^13.0.0",
-    "@fink/loxia": "^14.0.0",
+    "@fink/larix": "^15.0.0",
+    "@fink/loxia": "^17.0.0",
     "commitizen": "^4.2.1",
     "cz-conventional-changelog": "^3.3.0",
     "jest-cli": "^26.5.2",
@@ -53,6 +58,6 @@
     }
   },
   "dependencies": {
-    "@fink/std-lib": "^5.0.0"
+    "@fink/std-lib": "^6.0.0"
   }
 }
