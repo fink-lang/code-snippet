@@ -5,8 +5,8 @@
 
 
 
-default_opts = dict:
-  lines: dict:
+default_opts = rec:
+  lines: rec:
     before: 4
     after: 3
 

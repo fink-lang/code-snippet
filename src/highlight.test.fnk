@@ -7,7 +7,7 @@
 describe highlight_code_loc, fn:
 
   it 'highlights lines', fn:
-    loc = dict:
+    loc = rec:
       start: {line: 1, column: 5},
       end: {line: 1, column: 8}
 
@@ -20,7 +20,7 @@ describe highlight_code_loc, fn:
 
 
   it 'highlights single line', fn:
-    loc = dict:
+    loc = rec:
       start: {line: 1, column: 5},
       end: {line: 1, column: 8}
 
@@ -32,7 +32,7 @@ describe highlight_code_loc, fn:
 
 
   it 'highlights at most 4 line beofre', fn:
-    loc = dict:
+    loc = rec:
       start: {line: 6, column: 5},
       end: {line: 6, column: 8}
 
@@ -57,7 +57,7 @@ describe highlight_code_loc, fn:
 
 
   it 'highlights at most 3 line after', fn:
-    loc = dict:
+    loc = rec:
       start: {line: 2, column: 5},
       end: {line: 2, column: 8}
 
