@@ -1,6 +1,6 @@
 {pad_start} = import '@fink/std-lib/str.fnk'
 {split} = import '@fink/std-lib/regex.fnk'
-{length, join, drop, take, insert_at} = import '@fink/std-lib/iter.fnk'
+{map_ac, length, join, drop, take, insert_at} = import '@fink/std-lib/iter.fnk'
 {clamp} = import '@fink/std-lib/math.fnk'
 
 
@@ -37,7 +37,7 @@ highlight_code_loc = fn code, loc, options=default_opts:
     drop start_line
     take end_line - start_line
 
-    map line, idx=0:
+    map_ac fn line, idx=0:
       line_num = pad_start '${start_line + idx + 1}', line_num_padding
       ['${line_num}| ${line}', idx + 1]
 
