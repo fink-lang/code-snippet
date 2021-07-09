@@ -58,6 +58,6 @@
     }
   },
   "dependencies": {
-    "@fink/std-lib": "^8.0.1"
+    "@fink/std-lib": "^8.2.0"
   }
 }
